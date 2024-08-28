@@ -1,14 +1,27 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:sai/signup_page.dart';
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController();
+
   TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    const border = OutlineInputBorder(
+      borderSide: BorderSide(
+        color: Colors.black,
+        width: 3,
+        style: BorderStyle.solid,
+      ),
+    ) ;
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -32,11 +45,12 @@ class LoginScreen extends StatelessWidget {
                 fontFamily: 'Arial',
               ),
             ),
-            const SizedBox(height: 28),
+            const SizedBox(height: 30),
             TextField(
               decoration: const InputDecoration(
                 hintText: 'Email or mobile phone number',
-                border: OutlineInputBorder(),
+                enabledBorder: border,
+                focusedBorder: border,
                 prefixIcon: Icon(Icons.person),
 
               ),
@@ -48,7 +62,8 @@ class LoginScreen extends StatelessWidget {
             TextField(
               decoration: const InputDecoration(
                 hintText: 'Password',
-                border: OutlineInputBorder(),
+                enabledBorder: border,
+                focusedBorder: border,
                 prefixIcon: Icon(Icons.lock),
                 suffixIcon: Icon(Icons.remove_red_eye),
               ),
@@ -61,12 +76,10 @@ class LoginScreen extends StatelessWidget {
               height: 56,
               child: ElevatedButton(
                 onPressed: () {
-                  print("${emailController.text}");
-                  print("${passwordController.text}");
-                  print("The Login button is clicked");
+
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.greenAccent,
+                  backgroundColor: Colors.black,
                 ),
                 child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -85,10 +98,11 @@ class LoginScreen extends StatelessWidget {
             ),
             const SizedBox(height: 7),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder : (context) => const SignupPage()));
+              },
               child: const Text(
                 "Need account? Sign up",
-                
                 style: TextStyle(
                   color: Colors.blue,
                   fontSize: 16,
