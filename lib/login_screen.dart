@@ -88,6 +88,7 @@ class LoginScreen extends StatelessWidget {
               onPressed: () {},
               child: const Text(
                 "Need account? Sign up",
+                
                 style: TextStyle(
                   color: Colors.blue,
                   fontSize: 16,
