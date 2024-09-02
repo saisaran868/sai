@@ -8,6 +8,7 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
+  bool PasswordShow = true;
   TextEditingController signupEmailController = TextEditingController();
   TextEditingController signupPasswordController = TextEditingController();
   TextEditingController signupConfirmPasswordController = TextEditingController();
@@ -55,28 +56,41 @@ class _SignupPageState extends State<SignupPage> {
                  enabledBorder: border,
                ),
                controller: signupEmailController,
+               textInputAction: TextInputAction.next,
               ),
               const SizedBox(height: 30,),
                TextField(
-                decoration: const InputDecoration(
+                decoration:  InputDecoration(
                   hintText: 'Enter password',
                   enabledBorder: border,
                   focusedBorder: border,
-                  prefixIcon: Icon(Icons.lock),
-                  suffixIcon: Icon(Icons.remove_red_eye),
+                  prefixIcon: const Icon(Icons.lock),
+                  suffixIcon: IconButton(onPressed: (){
+                    setState(() {
+                      PasswordShow = !PasswordShow;
+                    });
+                  }, icon: const Icon(Icons.remove_red_eye)),
                 ),
+                 obscureText: PasswordShow,
                  controller: signupPasswordController,
+                 textInputAction: TextInputAction.next,
               ),
               const SizedBox(height: 30,),
-               TextField(
-                decoration: const InputDecoration(
+              TextField(
+                decoration:  InputDecoration(
                   hintText: 'Confirm password',
                   enabledBorder: border,
                   focusedBorder: border,
-                  prefixIcon: Icon(Icons.lock),
-                  suffixIcon: Icon(Icons.remove_red_eye),
+                  prefixIcon: const Icon(Icons.lock),
+                  suffixIcon: IconButton(onPressed: (){
+                    setState(() {
+                      PasswordShow = !PasswordShow;
+                    });
+                  }, icon: const Icon(Icons.remove_red_eye)),
                 ),
-                 controller: signupConfirmPasswordController,
+                obscureText: PasswordShow,
+                controller: signupConfirmPasswordController,
+                textInputAction: TextInputAction.next,
               ),
               const SizedBox(height: 30,),
 

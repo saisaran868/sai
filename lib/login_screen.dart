@@ -9,6 +9,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  bool _ObstractText = true;
   TextEditingController emailController = TextEditingController();
 
   TextEditingController passwordController = TextEditingController();
@@ -60,15 +61,20 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             const SizedBox(height: 30),
             TextField(
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 hintText: 'Password',
                 enabledBorder: border,
                 focusedBorder: border,
-                prefixIcon: Icon(Icons.lock),
-                suffixIcon: Icon(Icons.remove_red_eye),
+                prefixIcon: const Icon(Icons.lock),
+                suffixIcon: IconButton(onPressed:(){
+                  setState(() {
+                    _ObstractText = !_ObstractText;
+                  });
+
+                } , icon:const Icon(Icons.remove_red_eye),),
               ),
               textInputAction: TextInputAction.done,
-              obscureText: true,
+              obscureText: _ObstractText,
               controller: passwordController,
             ),
             const SizedBox(height: 39),
