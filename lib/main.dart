@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'login_screen.dart';
+import 'package:sai/splash/splash_screen.dart';
 void main(){
   runApp(const MyApp());
 }
@@ -16,7 +16,7 @@ class _MyAppState extends State<MyApp> {
 
    return const MaterialApp(
      debugShowCheckedModeBanner: false,
-     home:LoginScreen(),
+     home:SplashScreen(),
    );
   }
 }
